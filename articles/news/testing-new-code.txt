@@ -1,0 +1,5 @@
+Subject: Testing new code
+Date: 15 Jun 2011 11:45:00 +0300
+From: voneiden
+
+Just testing the new blog code thing. Testing mtime.
