@@ -14,6 +14,18 @@ width:100%;
 background-color: #222;
 }
 
+img 
+{
+max-width: 100%;
+margin-top:10px;
+margin-bottom:10px;
+margin-left:auto;
+margin-right:auto;
+display: block;
+}
+
+
+
 #spacer {
   width: 100%;
 background-color: #65f;
@@ -32,12 +44,12 @@ text-align: center;
 position: relative;
 top:-30px;
 }
-ul {
+ul.top {
 margin-top:5px;
 margin-bottom:5px;
 }
 
-li {
+li.top {
 list-style: none;
 display: inline;
 border: 1px solid #000;
