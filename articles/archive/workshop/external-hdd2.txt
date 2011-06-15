@@ -1,0 +1,17 @@
+From: Matti Eiden
+Subject: extHDD part 2 and scientist's claim trains fail
+Date: Sun, 07 Jun 2009 21:00:00 -0000
+
+<img src="http://www.mattieiden.com/pictures/pictures/DSCN0505b_medium.JPG" alt="Wooden case. I hate alt"><br>
+The case will be wooden, of course. As with all "environmental friendly" projects (it seems), the actual energy consumption + GHG emissions of the project are probably triple than what it would be just to buy a god damn external HDD instead of converting an internal one.<p>
+
+I just realized that at the moment I don't even have any need for an extHDD.<p>
+
+Shit. Which is nice.<p>
+<img src="http://www.mattieiden.com/pictures/pictures/DSCN0506b_medium.JPG" alt="Bullshit"><br>
+In this <u>interesting</u> picture we see the two screws that almost failed during last work night and also what's left of the original screw(s) (in the right corner). It's a good trailer otherwise, but that seems to be a serious design flaw. The screws have to hold enormous twisting forces in full load when braking.<p>
+In other news some American scientist claim that <a href="http://www.newscientist.com/article/dn17260-train-can-be-worse-for-climate-than-plane.html?DCMP=OTC-rss&nsref=environment">airplanes are more environmentaly friendly than trains</a>.<p>
+
+<a href="http://www.sustainable-transportation.com/">The original paper is also available</a>. <p>
+
+It sounds absurd to me. However I have a feeling that this study is about trains in Boston which may be run by the evergreen electricity of American coal power plants. I should dig about this more but I feel lazy.

@@ -35,7 +35,7 @@ class Home:
             article = self.db.articles[path]
             vars.update(article)
             date = time.gmtime(article['date'])
-            vars['date'] = time.strftime("%B %d, %Y. %Z")
+            vars['date'] = time.strftime("%B %d, %Y.")
             stream = self.fill(x,vars)
             buffer.append(stream)
          

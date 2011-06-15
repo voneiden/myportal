@@ -1,0 +1,23 @@
+From: Matti Eiden
+Subject: Winding Charger analysis, part I
+Date: Fri, 03 Apr 2009 21:00:00 -0000
+
+Received a winding charger a couple of days ago. It's one of those must have gadgets everywhere around that prove relatively useless in the end. Basically it's a small flashlight with a battery and a dynamo winder. The device is rated to generate up to 100mA of power at 5,1V (0,5W). The battery itself is a 3,6V Li-Ion battery rated 40mAh.<p>
+Disassembly reveals the following.<br>
+<img src="http://www.kotiposti.net/eiden/b/windingcharger.jpg"><br>
+The 3 red wires are connected with the winding dynamo. Reason for 3 wires is still somewhat unknown to me. There are 10 coils in the dynamo, but I can't figure where the wires are connected inside the dynamo. The 3 wires in the middle, red, black and blue are connected to the DC Output plug. I assume if there is nothing attached then the plug connects two of these wires to provide power for the flashlight. The two wires at the bottom are for the led lights.
+I'm still working on the full analysis of the circuit as I'm somewhat confused on how the electricity actually moves in there, but here's the part list<p>
+<pre>
+ID	Type		Value						Notes
+
+D1?	Diode		1N??01	1.0A General Purpose Rectifier		???
+D2	Diode		1N4001 	1.0A General Purpose Rectifier		MIC
+D3	Diode		1N4001 	1.0A General Purpose Rectifier		MIC
+D4?	Diode		1N??01	1.0A General Purpose Rectifier		???
+D5	Diode		1N4733A	5.1V, 1W Zener Diode			9T
+D6?	Diode		1N??01	1.0A General Purpose Rectifier		???
+D7?	Diode		1N??01	1.0A General Purpose Rectifier		???
+R1 	Resistor	15&#937;
+S1	Switch		?
+B1	Battery		3.6V Li-Ion 40mAh
+</pre>

@@ -1,0 +1,6 @@
+From: Matti Eiden
+Subject: External HDD
+Date: Sat, 30 May 2009 21:00:00 -0000
+
+Lately I thought I need to get more disk space on my laptop, but external USB drives have been out of question as I don't like their price tags. I've given up using the desk computer pretty much, and it's got a couple of hard drives, the other one being a nice 250GB. So I began to wonder if I could turn this IDE drive into an USB hard disk.<p>
+The solution lies <a href="http://cgi.ebay.co.uk/USB-2-0-to-IDE-SATA-2-5-3-5-Hard-Drive-Converter-Cable_W0QQitemZ250422550325QQcmdZViewItemQQptZPCA_Cables_Adapters?hash=item3a4e58df35&_trksid=p3286.c0.m14&_trkparms=72%3A2108|66%3A2|65%3A12|39%3A1|240%3A1309|301%3A1|293%3A1|294%3A50">near</a>. Actually the web seems to be full of these, especially being sold from Hong Kong. And that one costed me about 7 euros with the postages, so it's really affordable. Now all it takes is a nice case for the drive..

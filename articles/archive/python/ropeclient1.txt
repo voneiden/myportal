@@ -1,0 +1,17 @@
+From: Matti Eiden
+Subject: Introducing ropeclient!
+Date: Fri, 03 Dec 2010 08:46:00 -0000
+
+<a href="http://eiden.fi/ropeclient/">Ropeclient</a> is something I came up while playing some <a href="http://en.wikipedia.org/wiki/Earthdawn">Earthdawn</a> with a bunch of friends online on Skype. Along the years we've been playing various games irl, on IRC (which is quite widely used for roleplaying, take <a href="http://darkmyst.org/">darkmyst</a> as an example of a whole IRC network dedicated for roleplaying) and on Skype. For both IRC and Skype we naturally had our dice bots.<p> 
+
+
+However one thing that bugs me in IRC (and Skype), is that you have very limited control over how you can express yourself. Using colors is a nice thing too, in the end. So I began to work on an idea to make a simple 'chat' client that's especially suitable for roleplaying. One could say that it's a bit like a MUD/MUSH server, however there are a few vital differences and features.<p>
+<ul>
+<li>A player list, that show's if somebody is typing (Nice feature for the GM inspired by skype!)
+<li>Automatic coloring of various actions, such as speaking, emoting, and telling (private messages)
+<li>Freeform coloring using simple color tags (<red>, <blue>, <pink> etc.)
+<li>Integrated dice that can be used anywhere in a sentence using the traditional dice command (ex. !d6 or !2d6+d8+3 etc.)
+<li>Seperate character names that can be quickly altered
+</ul>
+<p>
+The <a href="http://eiden.fi/ropeclient/">ropeclient and ropeserve</a> are almost done, one thing I'm still planning to implement for the time being is a IRC-like ping-pong protocol to ensure that players time-out properly. The whole system also has a very good potential to be expanded into more a more interactive system, for example MUD-like rooms, character sheets, and all such.

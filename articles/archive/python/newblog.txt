@@ -1,0 +1,18 @@
+From: Matti Eiden
+Subject: Blog evolving
+Date: Tue, 09 Jun 2009 21:00:00 -0000
+
+Last morning I just got the idea that I want to get rid of <a href="http://pyblosxom.sourceforge.net/">Pyblosxom</a> as the blog code. Why? Because I don't know how it works and find it difficult to modify. So I made my own blog cgi, dubbed RandomXom, in few hours. It looks almost the same plus it already has one major feature that Pyblosxom doesn't have: <a href="http://www.mattieiden.com/cgi-bin/blog.cgi/travels/7">viewing older posts</a>.<p>
+Viewing individual posts and comments is not yet included. This might be more of a hassle anyway..
+<p>
+Update #1<br>
+While Pybloxsom claims to be lightweight and simplistic, as with all long term projects features get added every now and then slowly turning the project into a little big monster.<p>
+Render times<br>
+<table>
+<tr>
+<td>Pybloxom</td><td>0,0504s</td><td>3800 lines of code</td></tr><tr>
+<td>RandomXom</td><td>0,0048s</td><td>200 lines of code</td></tr></table>
+<p>
+Update #2<br>
+Comments are now working. There's a "show older" link at the bottom of listing pages. I'm spent. Bye bye pyblosxom.<br>
+<font size="-2">Testing atime/mtime edit</font>

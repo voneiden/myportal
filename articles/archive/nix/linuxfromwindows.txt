@@ -1,0 +1,47 @@
+From: Matti Eiden
+Subject: Installing Linux from Windows without CD or USB memory stick
+Date: Sun, 01 Aug 2010 13:03:00 -0000
+
+This weekend I was stuck with an old 500mhz computer, with a slow Windows XP on it. I've been long thinking that I'd like to install linux on this computer, however every time I've been lacking empty CD's to burn the setup on. Of course a computer this old wont be supporting USB booting either.
+<p>
+This method requires that you have either free partition(s) on your hard disk or an extra hard disk at hand that you can use to install the linux on to. If you want to install the linux on the same partition with windows, you might want to check out <a href="http://wubi-installer.org/">Wubi</a>, though it's Ubuntu only and certainly not suitable for slow computers.
+<p>
+<b>What you need?</b><br>
+- Basic knowledge of GRUB and partitioning<br>
+- <a href="http://sourceforge.net/projects/grub4dos/">GRUB4DOS</a><br>
+- ISO image of your choice of distro (I'm covering only isolinux distros, such as <a href="http://www.archlinux.org">Arch Linux</a> here.)<br>
+- FAT partition for extracting your ISO file<br>
+- empty partition(s)/space for installing your linux
+<p>
+<b>First step:</b> Unpack the ISO image (you can use <a href="http://www.poweriso.com/">PowerISO</a> to get this done) on a FAT partition. Check also the label of the image, and name your fat partition the same. I used a second hard disk, on which I formatted a 300MB fat32 partition to fit the Arch Linux installer. If you need to do partitioning on Windows, you can use <i>Start->Run->compmgmt.msc</i>
+<p>
+<b>Second step:</b> Check out isolinux.cfg for the boot options. In isolinux the options are passed alongside the initrd argument, while in GRUB they're passed alongside the kernel argument. Now open your GRUB MENU.LST file and put something like this in there:<br>
+
+<pre>
+timeout 10
+
+title Return to Windows Loader
+root (hd0,0)
+chainloader +1
+
+title Arch Install
+root (hd1,0)
+kernel /boot/vmlinuz26 archisolabel=ARCH_201005 tmpfs_size=75% locale=en_US.UTF-8
+initrd /boot/archiso.img
+</pre>
+
+Remember to label your FAT partition ARCH_201005.
+<p>
+<b>Third step:</b> Boot. Your distro installation should now start up. I made partitions for just / and swap,  but I had to boot the computer since due to it's age it didn't seem to update the /dev/ partition listings. Install as usual, skip installing bootloader. <b><font color="red">Now you need to copy your linux initramfs and kernel images somewhere</font></b>. I put them just on my windows partition (sda1) and then added this to GRUB MENU.LST:<br>
+<pre>
+title Arch Linux
+root (hd0,0)
+kernel /vmlinuz26 root=/dev/sdb2 ro
+initrd /kernel26.img
+</pre>
+<p>
+That's it, you should be having a working system now. Here's still the logic of the procedure:<br>
+1) BIOS boots Windows Boot Loader on windows partition<br>
+2) Windows Boot Loader boots GRUB on windows partition<br>
+3) GRUB boots Linux kernel on windows partition<br>
+4) Linux Kernel roots to the linux partition<br>

@@ -1,0 +1,17 @@
+From: Matti Eiden
+Subject: Arch Linux
+Date: Wed, 01 Jul 2009 21:00:00 -0000
+
+After months of using, my favourite <a href="http://en.wikipedia.org/wiki/Linux_distribution">distro</a> is now most certainly <a href="http://www.archlinux.org/">Arch Linux</a>. Arch features a quick and simple install that throws the user straight into a bash session. What makes Arch stand out of others are quite extraordinary.<p>
+<ul>
+<li><b>Community</b> - The Arch <a href="http://bbs.archlinux.org/">forums</a> and especially the <a href="wiki.archlinux.org/"><b>wiki</b></a> have an answer to every question. The wiki is almost noob-proof.</li>
+<li><b>pacman</b> - the <tt>apt-get</tt> of Arch that does package maintaining from installing to updating to removing. Huge repos full of software.</li>
+<li><b>AUR</b> - if you can't find it with pacman (or you prefer a nightly build), try <a href="http://aur.archlinux.org/">ArchLinux User-community Repository (AUR) </a> by using <tt>yaourt</tt> instead of <tt>pacman</tt>. Source is downloaded, patched and compiled on the fly and all you have to do is nothing.</li>
+<li><b>Rolling release</b> - the way it's meant to be.</li>
+</ul>
+<p>
+For window manager I'm using currently <a href="http://awesome.naquadah.org/">Awesome3</a>, which is.. awesome. Please ignore the sagacious conversation at megagiga chat.<br>
+
+<a href="http://www.kotiposti.net/eiden/b/jee.png"><img width="300" src="http://www.kotiposti.net/eiden/b/jee.png" alt="Awesome3 running on Arch Linux"></a>
+<p>
+<font color="red">Also there's an update to the H1N1 post with latest stats!</font>

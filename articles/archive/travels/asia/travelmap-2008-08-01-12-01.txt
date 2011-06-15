@@ -1,0 +1,7 @@
+From: Matti Eiden
+Subject: Route map
+Date: Fri, 20 Feb 2009 21:00:00 -0000
+
+Karttaa voi liikutella ja klikkailla. Päivitykset saattavat tulla harvassa.<p>
+
+<iframe width="640" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=en&amp;t=p&amp;s=AARTsJqGtZGA4hhhuineDCOVspkAEHqSag&amp;msa=0&amp;msid=116321183541391951962.000455a6b07291e2f9aec&amp;ll=26.70636,81.013184&amp;spn=9.413823,14.0625&amp;z=6&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=en&amp;t=p&amp;msa=0&amp;msid=116321183541391951962.000455a6b07291e2f9aec&amp;ll=26.70636,81.013184&amp;spn=9.413823,14.0625&amp;z=6&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>

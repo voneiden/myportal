@@ -1,0 +1,10 @@
+From: Matti Eiden
+Subject: Blog v2.1
+Date: Thu, 20 May 2010 21:00:00 -0000
+
+A complete rewrite of the <a href="http://www.eiden.fi/blog.html">blog.cgi</a> has been done. The current version which is uploaded that the link supports everything the old one did, except comments, and looks much more nicer.<p>
+
+Today I added the commenting thing back, and experimentally went with OpenID login. The current implementation supports Google and Yahoo logins. I did not put the akismet spam filter in between yet though, so I'm curious to see if bots use OpenID to send spam too.<p>
+It's quite simple. You write a comment, choose which OpenID provider you use, and click submit. The comment gets cached on the server while the user gets redirected to their OpenID provider, who does the actual login and once that's OK, redirects the user back to the site with credentials. If credentials are OK, the cached message will be added on the blog.
+<br>
+For every post one has to 'relogin', as I'm not interested in storing sessions.

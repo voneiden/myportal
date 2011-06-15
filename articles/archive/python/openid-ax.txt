@@ -1,0 +1,74 @@
+From: Matti Eiden
+Subject: Python OpenID Attribute Exchange
+Date: Sun, 23 May 2010 21:00:00 -0000
+
+<style type="text/css">
+        @import "http://www.eiden.fi/style.css";
+</style>
+Here's a small example on how to do a OpenID Attribute Exchange (ax) request with Python. It took me quite a while of browsing the API with a bit broken documentation myself, so thought I'd share. By all means this is not the best way to do it, but perhaps the most simple.<p>
+Lets do it! <br>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+
+<span class="n">self_url</span> <span class="o">=</span> <span class="s">&quot;http://www.eiden.fi/cgi-bin/python-ax-test.cgi&quot;</span>
+
+<span class="kn">from</span> <span class="nn">openid.consumer</span> <span class="kn">import</span> <span class="n">consumer</span>
+<span class="kn">from</span> <span class="nn">openid.extensions</span> <span class="kn">import</span> <span class="n">ax</span>
+<span class="kn">import</span> <span class="nn">pickle</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">cgi</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">FieldStorage</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;choice&#39;</span><span class="p">):</span>                  <span class="c"># Form submit received</span>
+    <span class="n">service</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s">&#39;choice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>          <span class="c"># Grab the service</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="p">{}</span>                              <span class="c"># Our empty session, this needs to be stored somehow</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">consumer</span><span class="o">.</span><span class="n">Consumer</span><span class="p">(</span><span class="n">session</span><span class="p">,</span><span class="bp">None</span><span class="p">)</span> <span class="c"># Create our consumer class without a storing system (I was too lazy to figure how it works)</span>
+    <span class="k">if</span> <span class="n">service</span> <span class="o">==</span> <span class="s">&quot;google&quot;</span><span class="p">:</span>  <span class="n">authentication</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="s">&quot;https://www.google.com/accounts/o8/id&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">service</span> <span class="o">==</span> <span class="s">&quot;yahoo&quot;</span><span class="p">:</span> <span class="n">authentication</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="s">&quot;http://www.yahoo.com&quot;</span><span class="p">)</span>
+    <span class="n">ext</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">FetchRequest</span><span class="p">(</span><span class="n">self_url</span><span class="p">)</span>                                              <span class="c"># Create our extension</span>
+    <span class="n">ext</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">AttrInfo</span><span class="p">(</span><span class="s">&quot;http://axschema.org/contact/email&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>    <span class="c"># This is for both..</span>
+    <span class="n">ext</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">AttrInfo</span><span class="p">(</span><span class="s">&quot;http://axschema.org/namePerson&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>       <span class="c"># This is for yahoo..</span>
+    <span class="n">ext</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">AttrInfo</span><span class="p">(</span><span class="s">&quot;http://axschema.org/namePerson/first&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="c"># This is for google..</span>
+    <span class="n">ext</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">AttrInfo</span><span class="p">(</span><span class="s">&quot;http://axschema.org/namePerson/last&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>  <span class="c"># This is for google..</span>
+    <span class="n">authentication</span><span class="o">.</span><span class="n">addExtension</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>                                             <span class="c"># Attach it.</span>
+    <span class="n">redirect</span> <span class="o">=</span> <span class="n">authentication</span><span class="o">.</span><span class="n">redirectURL</span><span class="p">(</span><span class="s">&#39;http://www.eiden.fi&#39;</span><span class="p">,</span><span class="n">self_url</span><span class="p">)</span>        <span class="c"># Site name &amp; return address</span>
+    <span class="k">print</span> <span class="s">&quot;&quot;&quot;Content-Type: text/plain</span><span class="se">\n</span><span class="s">Refresh: 0; url=</span><span class="si">%s</span><span class="se">\n\n</span><span class="s">Wait..&quot;&quot;&quot;</span><span class="o">%</span><span class="n">redirect</span>  <span class="c"># Do a cgi redirect</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test_session&#39;</span><span class="p">,</span><span class="s">&#39;wb&#39;</span><span class="p">)</span>                <span class="c"># Really nasty way of dumping the session.. but I&#39;m lazy.</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">session</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">elif</span> <span class="n">params</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;openid.ns&#39;</span><span class="p">):</span> <span class="c"># OpenID response received</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test_session&#39;</span><span class="p">,</span><span class="s">&#39;rb&#39;</span><span class="p">)</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;Content-Type: text/plain&quot;</span>
+        <span class="k">print</span>
+        <span class="k">print</span> <span class="s">&quot;Session load failed.&quot;</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c">#This just dies if the load fails.</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="p">{}</span> <span class="c">#We need to make a nice dictionary out of the cgi.FieldStorage format</span>
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span> <span class="n">query</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">consumer</span><span class="o">.</span><span class="n">Consumer</span><span class="p">(</span><span class="n">session</span><span class="p">,</span><span class="bp">None</span><span class="p">)</span>                <span class="c"># As before.</span>
+    <span class="n">result</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">self_url</span><span class="p">)</span> <span class="c"># Complete it. The second param should be your URL</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s">&quot;success&quot;</span><span class="p">:</span> 
+        <span class="n">extension</span>  <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">FetchResponse</span><span class="p">()</span><span class="o">.</span><span class="n">fromSuccessResponse</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">=</span><span class="p">{}</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">extension</span><span class="o">.</span><span class="n">getExtensionArgs</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">&quot;Content-Type: text/plain</span><span class="se">\n\n</span><span class="s">&quot;</span>
+        <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">It&#39;s easy!&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;Content-Type: text/plain&quot;</span>
+        <span class="k">print</span>
+        <span class="k">print</span> <span class="s">&quot;Auth failed.&quot;</span>
+        
+<span class="k">else</span><span class="p">:</span> <span class="c"># Default view</span>
+    <span class="k">print</span> <span class="s">&quot;Content-Type: text/html&quot;</span>
+    <span class="k">print</span>
+    
+    <span class="k">print</span> <span class="s">&quot;&quot;&quot;&lt;form method=&quot;post&quot; action=&quot;</span><span class="si">%s</span><span class="s">&quot; accept-charset=&quot;UTF-8&quot; name=&quot;choice_form&quot; id=&quot;choice_form&quot;&gt;&quot;&quot;&quot;</span><span class="o">%</span><span class="n">self_url</span>
+    <span class="k">print</span> <span class="s">&quot;&quot;&quot;&lt;input type=&quot;radio&quot; name=&quot;choice&quot; value=&quot;google&quot; checked&gt; Google (@gmail.com)&lt;br/&gt;&quot;&quot;&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;&quot;&quot;&lt;input type=&quot;radio&quot; name=&quot;choice&quot; value=&quot;yahoo&quot;&gt; Yahoo (@yahoo.com)&lt;p/&gt;&quot;&quot;&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;&quot;&quot;&lt;input value=&quot;Submit&quot; name=&quot;submit&quot; type=&quot;submit&quot; id=&quot;post&quot;/&gt;&quot;&quot;&quot;</span>
+</pre></div>
+Bang! You can check out the <a href="http://www.eiden.fi/cgi-bin/python-ax-test.cgi">script in action here</a>.

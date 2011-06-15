@@ -1,0 +1,15 @@
+From: Matti Eiden
+Subject: Sup mail user agent and Python
+Date: Tue, 08 Jun 2010 21:00:00 -0000
+
+Recently (for the past month) I've been trying a very nice piece of software, called <a href="http://sup.rubyforge.org/">sup</a>. It's a text based mail user agent (non-geeks read: email client) that implements Google's GMail style threading and searching functionality over the time based sorting hierarchy of the most common mail clients.<br>
+<img src="http://sup.rubyforge.org/ss1.png" alt="sup mail" width="400">
+<img src="http://sup.rubyforge.org/ss2.png" alt="sup mail" width="400">
+<br>
+However, sup is being developed in Ruby, has a huge bunch of dependencies (which is quite easy to get away with using Arch Linux though) and is perhaps getting a bit slow on the development side. It has a huge bunch of features, but some features are lacking or not completed, even for years now. This caused me to move towards building up my own version of sup, in Python. Yeah, almost a total ripoff, but I find it a nice learning experience.<p>
+<table border="1">
+<tr><td></td><td>sup</td><td>pymail</td></tr>
+<tr><td>output</td><td>ncurses</td><td><a href="http://excess.org/urwid/">urwid</a> (raw/unicode)</td></tr>
+<tr><td>search</td><td>xapian</td><td><a href="http://whoosh.ca/">Whoosh</a>/xappy</td></tr>
+<tr><td>dependencies</td><td>12</td><td>2</td></tr>
+</table>

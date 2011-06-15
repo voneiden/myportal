@@ -1,0 +1,11 @@
+From: Matti Eiden
+Subject: Enigma replica
+Date: Mon, 18 May 2009 21:00:00 -0000
+
+Just something random I put together some days ago. A second world war Enigma ciphering machine (used by Germany, especially by the U-Boats) <a href="http://www.mattieiden.com/cgi-bin/enigma.cgi">recreation in python</a>.
+<p>
+<img src="http://upload.wikimedia.org/wikipedia/commons/a/ae/Enigma.jpg">
+<p>
+
+Basically this one supports the <a href="http://en.wikipedia.org/wiki/Enigma_rotor_details">rotors</a> I, II, III and the reflector in the standard fixed order. Adding the extra rotors would simply be a matter of adding their wiring lines into a list and the possibility to change rotor order would simply be a matter of writing a better html gui. For now, this will do.<p>
+Inspired by <a href="http://www.enigmaco.de/enigma/enigma.swf">flash enigma</a>. Also initial rewiring possibility is missing altogether which can be seen in the flash version.

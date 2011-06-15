@@ -1,0 +1,10 @@
+From: Matti Eiden
+Subject: K800i and iPod Nano
+Date: Tue, 11 Nov 2008 21:00:00 -0000
+
+<img src="http://www.kotiposti.net/eiden/b/ipodnano.jpg"><br>
+Two projects from last summer are now up and working. The K800i had been dead since August and the problem lied in corrupted ERom. If on shutdown the K800i doesn't receive enough voltages (sudden removal of batteries?) it might corrupt the ERom thus resulting in a dead phone. The iPod Nano was in pieces due to the click wheel not working. I managed to fix it by adding glue inside the wheel. Now it doesn't "click", but at least detects the buttons being pressed.
+<p>
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/-zGpEKkO3UY&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/-zGpEKkO3UY&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object><p>
+Peter Lynn Hornet 2M vs 3M. <br>
+How was this related to traveling again? Oh, it wasn't.

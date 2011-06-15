@@ -1,0 +1,9 @@
+From: Matti Eiden
+Subject: HP 6735s laptop fan replacement
+Date: Tue, 07 Dec 2010 17:12:00 -0000
+
+I've been using my HP 6735s laptop for almost two years now. It has begun to suffer symptoms of old age typical for laptops. First off the battery is pretty much dead. It happened very suddenly, half a year ago. Second, the fan began making crunchy noise. I was never very satisfied with the cooling of the 6735s (or any HP laptop for that matter) and dislike fan noise in the first place very much. I've now disassembled the laptop following the great instructions from <a href="http://www.insidemylaptop.com/disassemble-hp-compaq-6730s-6735s-notebook-remove-cooling-fan/">Inside My Laptop</a>. Funny enough that you have to disassemble the whole laptop to get into the most crucial part of the computer.. the fan.<br>
+
+One interesting discovery is the air intake of the cooling system - there's no clear intake. The main intake comes through the keyboard, which surely isn't gonna give a good flow of air. Obviously it provides a far more reliable intake than the usual bottom side cooling, which can get blocked if the laptop is placed on a bed or.. a lap.<br>
+
+For now I'll be thinking of alternative cooling solutions and also to see if the fan noise can be fixed.

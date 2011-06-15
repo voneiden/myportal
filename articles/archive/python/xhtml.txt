@@ -1,0 +1,13 @@
+From: Matti Eiden
+Subject: XHTML 1.0 versus HTML 4.01
+Date: Mon, 15 Jun 2009 21:00:00 -0000
+
+In light of the new blog engine I also worked on making the blog <a href="http://www.w3.org/TR/html4/">HTML 4.01 (Transitional)</a> valid. However, now I <strike>think I'll switch to <a href="http://www.w3.org/TR/xhtml1/">XHTML 1.0</a> </strike>instead as it follows are more strict set of rules and is generally more compatible with browsers.<p>
+The <a href="http://www.w3.org/Style/CSS/">CSS</a> needs some work too. Also I'm going to work with the comment system some more, especially with some security issues that remain. Also, I'm planning to change the comment system from the current, where the comment filename is {originalpostname}.cmt to {originalpostname}.{numberofcomments}.cmt, so the blog doesn't have to open and read every comment file to know how many comments have been posted.<p>
+Not that this system has been of any use in the first place. I'll probably release the source of the blog engine in time though. I need to make it a little more pretty looking first though. It's one of those thought of flow projects that aims to reach one single goal. Kinda like kamikaze fighters.
+<br>---<br>
+Fuck xhtml, it's too slow to type. Also, this site is now perfect HTML 4.01 (until I typo or post another youtube video mindlessy). Woha. I'm going to work on the image gallery too, I want to drop php totally.
+<br>---<br>
+Comment security was increased and also there is now an experimental picture folder at <a href="http://mattieiden.com/cgi-bin/blog.cgi/pictures">http://mattieiden.com/cgi-bin/blog.cgi/pictures</a> that is currently capable of displaying all the thumbnails and folders with pictures. There is, however no directory structure yet so the pictures are unsorted.
+<br>---<br>
+<a href="http://www.mattieiden.com/blog.txt">Current source</a>

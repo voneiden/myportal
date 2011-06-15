@@ -1,0 +1,24 @@
+From: Matti Eiden
+Subject: Terminal Skype
+Date: Mon, 18 May 2009 21:00:00 -0000
+
+Some weeks back I started poking the <a href="http://www.skype.com">Skype</a> Python <a href="https://developer.skype.com/wiki/Skype4Py">API</a> once again, in the quest of creating a GUI free skype. Basically the 4th generation Skype on Windows looks incredibly ugly full of useless features and space consuming design. So far I've been sticking with the 3rd generation (which has basically all the features from text to video), but still has those annoying notifications and ads.<p> 
+The idea died few weeks back on the lack of wide-character support (meaning no unicode &#9774;. If you see a box, your browser's lacking unicode compatibility.) on <a href="http://www.gnu.org/software/ncurses/">ncurses</a> library for python.<p>
+Well, now I began working again, ditching the ncruses idea for a neat <a href="http://en.wikipedia.org/wiki/Command_line_interface">CLI</a>. Instead making a simple printing CLI myself.
+<p>
+<img src="http://www.kotiposti.net/eiden/b/skypemainmenu.jpg">
+<p>
+Chats with users are started with IRC-like command "/msg number <text>"<br>
+Bookmarked chats can be opened by typing "/open number"<br>
+Active chats can be viewed by typing "/<number>"
+<p>
+<img src="http://www.kotiposti.net/eiden/b/ZOMG.JPG">
+<br>
+Chat view with a total irc-look and unicode support.
+<p>
+On the next inspiration boost I'll be adding <a href="http://en.wikipedia.org/wiki/Telnet">Telnet</a> protocol support for remote connections with some ANSI colours to get a nice look.<p>
+<p>
+After this Skype can be accessed even on computers not running Bluescreen/X11/Macfags. Of course this requires one computer running the main skype application, though skype can also be run in <a href="http://en.wikipedia.org/wiki/Xvfb">xvfb</a>.
+<p>
+<img src="http://www.kotiposti.net/eiden/pietunukem.jpg"><br>
+"Eat shit and die." -Duke Nukem 1996

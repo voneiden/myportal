@@ -1,0 +1,27 @@
+From: Matti Eiden
+Subject: Visitors and Operating Systems
+Date: Tue, 04 Aug 2009 21:00:00 -0000
+
+<pre><tt>
+Linux    501
+- Ubuntu 205
+- Fedora 10
+- Other  296
+
+Windows  819
+- 95     5
+- 98     19
+- NT     6
+- 2K     36
+- XP     507
+- XP64   57
+- Vista  182
+- Win7   7
+
+Macintosh 2
+iPhone    2
+
+Bots    462
+Unknown 159
+</tt></pre>
+I tip my hat to the fellow browsing with Win95.

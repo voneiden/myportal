@@ -1,0 +1,16 @@
+From: Matti Eiden
+Subject: Git is GREAT for collaborating LaTeX documents!
+Date: Sun, 17 Oct 2010 19:42:00 -0000
+
+Anybody who's working with other people on any kind of project which includes a lot of writing, be it a report or computer code, has encountered a problem. It's very hard to get multiple people to write at the same time, thus it often ends up into one person being the one who writes and the rest drink beer/play N64. The solution to this problem is called <a href="http://en.wikipedia.org/wiki/Revision_control">revision control</a>. There are many programs and tools that implement this, as far as I know even MS Word has some revision control possibilities. <p>
+
+However, so far <a href="http://git-scm.com/">Git</a> has seemed to be the best solution for <a href="http://en.wikipedia.org/wiki/LaTeX">LaTeX</a>.
+<img src="http://git-scm.com/images/header.gif"><p>
+
+People seem to think that Git is freaking difficult to learn. Well, it is, if you're just trying to learn the commands. To use Git, you really need to understand how the whole thing works under the hood. If you don't, you will simply not know what command to type and what to do to solve a certain problem. But when you do, it's pretty straightforward and logical. It does require a bit of IQ, but yeah. So I'm gonna toss some useful links out. <p>
+
+<UL>
+<LI><a href="http://www.eecs.harvard.edu/~cduan/technical/git/">Understanding Git Conceptually</a>: A brief document explaining the concept. A must read. Still not very easy to understand at parts.
+<LI><a href="http://eagain.net/gitweb/?p=gitosis.git">Gitosis:</a> Software for hosting Git repositories and <a href="http://scie.nti.st/2007/11/14/hosting-git-repositories-the-easy-and-secure-way">good blog post</a> on how to set it up.
+<LI><a href="http://code.google.com/p/tortoisegit/">Git for Windows</a>, it's not particularly fun, but it does the job. 
+</UL>

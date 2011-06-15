@@ -1,0 +1,7 @@
+From: Matti Eiden
+Subject: Updating time
+Date: Thu, 12 Nov 2009 21:00:00 -0000
+
+It's time to update the blog code. I see the script fails when there are non-ascii characters in the comments and with some other random fun things. I'll fix these tonight and maybe work a little with the gallery again. 
+--
+not that I really made any progress on the blog..

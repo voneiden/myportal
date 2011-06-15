@@ -1,0 +1,11 @@
+From: Matti Eiden
+Subject: Avaruuspeli aka. The Infinity Project
+Date: Wed, 18 Nov 2009 21:00:00 -0000
+
+Infinity because it's a project that I have restarted so many times that I've lost count. I've began to make it in 2D (pygame, opengl), 3D (opengl, soya3d) and always there's been some sort of problem that has made my brain explode. The reasons for failure have been many. In 3D versions it always comes down to graphics and physics. Simple Newtonian simulating of orbits is very prone to calculation errors (circular orbits my ass) and Kepler's elements have always been quite a headache for me.<br>
+<img src="http://www.fly-zero-g.com/Orbit.jpg"><br>
+Graphics are another thing. A couple of attempts at AP have failed because I haven't succeeded to implement atmospherical scattering. Totally useless feature, but well, once if I want to do something it seems to be all or nothing.<br>
+In 2D I've done all kind of experiments. The most advanced version of AP featured Newtonian physics, planets with moons, aeroflight with drag and even base construction on pseudorandomly generated planets. That project died because I wasn't happy with something I can't remember and got bored.<br>
+So here we go again. This time, I've managed to implement enough Keplerian elements to create 2D orbits that are damn circular if I want to. So the base is good. Keplerian elements also allow for a very fast prediction of orbits compared to Newtonian differentiation.<br>
+<img src="http://www.mattieiden.com/avaruuspeli/apcomeback.png"><br>
+Even this time I spent a few hours tracking a weird behaviour in the orbit predictions only to find out that I had a sin and a cos function in wrong places. Typical. And what can be seen in the above picture is a huge sun, 3 planets with circular orbits and one orbit with eccentricity of ~0,5.
