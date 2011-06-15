@@ -5,6 +5,7 @@ import os
 import email.feedparser
 import email.utils
 import re
+import time
 
 class Home:
     def __init__(self,db):
@@ -13,8 +14,8 @@ class Home:
         self.db = db
         
         vars = {
-        'page_title':'This is a cool test.'}
-        
+        'page_title':'I hate titles.',
+        'quote':'Orion!'}
         
         f = open('style/head.html','r')
         x = f.read()
@@ -27,8 +28,14 @@ class Home:
         x = f.read()
         f.close()
         
-        for path,article in self.db.articles.items():
+        articles = self.db.articles.keys()
+        articles.sort(self.sort)
+        
+        for path in articles[:5]:
+            article = self.db.articles[path]
             vars.update(article)
+            date = time.gmtime(article['date'])
+            vars['date'] = time.strftime("%B %d, %Y. %Z")
             stream = self.fill(x,vars)
             buffer.append(stream)
          
@@ -47,12 +54,18 @@ class Home:
         for match in re.finditer(self.varfinder,stream):
             var = match.group()
             name = var[2:-1]
-            print "Checking var",name,vars
+            #print "Checking var",name,vars
             if name not in vars: stream = stream.replace(var,'(variable missing)',1)
             else: stream = stream.replace(var,str(vars[name]),1)
         
         return stream
-
+    def sort(self,a1,a2):
+        a1 = self.db.articles[a1]
+        a2 = self.db.articles[a2]
+        if a1['date'] < a2['date']: return 1
+        elif a1['date'] > a2['date']: return -1
+        else: return 0
+        
 
 
 
