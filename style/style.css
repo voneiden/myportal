@@ -44,10 +44,12 @@ text-align: center;
 position: relative;
 top:-30px;
 }
+
 ul.top {
 margin-top:5px;
 margin-bottom:5px;
 }
+
 
 li.top {
 list-style: none;
@@ -104,12 +106,19 @@ padding-right:5px;
 margin-bottom:25px;
 }
 
-#subject {
+h1.subject {
+margin-top:0px;
+margin-bottom:0px;
 font-size:24px;
+font-weight:normal;
 }
-#date {
+h2.date {
+margin-top:0px;
+margin-bottom:5px;
 font-size:12px;
 margin-bottom:5px;
+font-weight:normal;
+margin-left:5px;
 }
 #message {
 font-size:16px;
