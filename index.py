@@ -31,20 +31,69 @@ class Home:
             buffer = self.displayPictures(request)
             if buffer: print "\n".join(buffer)
             
-        
+       
+            
         else:
+            path = request.replace('/cgi-bin/index.py','')
+            if len(path) > 0:
+                if path[0] == '/': path = path[1:]
             
-            self.head = self.load('style/head.html')
-            self.post = self.load('style/post.html')
-            self.foot = self.load('style/foot.html')
+            if len(path) == 0:
             
+                self.head = self.load('style/head.html')
+                self.post = self.load('style/post.html')
+                self.foot = self.load('style/foot.html')
+                
+                
+                self.articles = self.db.articles.keys()
+                self.articles.sort(self.sort)
+                
+                # Handle request here
+                buffer = self.displayPosts()
+                print "\n".join(buffer)
+                
             
-            self.articles = self.db.articles.keys()
-            self.articles.sort(self.sort)
-            
-            # Handle request here
-            buffer = self.displayPosts()
-            print "\n".join(buffer)
+                
+            elif ".txt" in path:
+                path = path.replace("content/blog","articles/archive")
+                path = path.replace(".txt",".html")
+                print "Status: 301 MOVED PERMANENTLY"
+                print "Location: http://www.eiden.fi/cgi-bin/index.py/%s"%path
+                print
+                
+            else:
+                if '.html' in path:
+                    self.head = self.load('style/head.html')
+                    self.post = self.load('style/post.html')
+                    self.foot = self.load('style/foot.html')
+                    
+                    
+                    apath = path.replace('.html','.txt')
+                    apath = "./%s"%apath
+     
+                    if apath in self.db.articles.keys():
+                        article = self.db.articles[apath]
+                        self.vars.update(article)
+                        date = time.gmtime(article['date'])
+                        self.vars['date'] = time.strftime("%B %d, %Y.",date)
+
+                        buffer = []
+                        buffer.append('Content-type: text/html; charset=UTF-8')
+                        buffer.append('')
+                        buffer.append(self.fill(self.head))
+                        buffer.append(self.fill(self.post))
+                        buffer.append(self.fill(self.foot))
+                        
+                        print "\n".join(buffer)
+                        
+                    else:
+                        print "Status: 404 NOT FOUND"
+                        print
+                        
+                else:
+                    print "Status: 404 NOT FOUND"
+                    print
+                    
          
         
     def load(self,path):
