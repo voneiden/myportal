@@ -51,11 +51,10 @@ class Home:
         
         for path in self.articles[:5]:
             article = self.db.articles[path]
-            vars.update(article)
+            self.vars.update(article)
             date = time.gmtime(article['date'])
-            #print "using date",date
-            vars['date'] = time.strftime("%B %d, %Y.",date)
-            stream = self.fill(x)
+            self.vars['date'] = time.strftime("%B %d, %Y.",date)
+            stream = self.fill(self.post)
             buffer.append(stream)
             
         buffer.append(self.fill(self.foot))
@@ -63,13 +62,13 @@ class Home:
          
 
         
-    def fill(self,stream,vars):
+    def fill(self,stream):
         for match in re.finditer(self.varfinder,stream):
             var = match.group()
             name = var[2:-1]
             #print "Checking var",name,vars
-            if name not in vars: stream = stream.replace(var,'(variable missing)',1)
-            else: stream = stream.replace(var,str(vars[name]),1)
+            if name not in self.vars: stream = stream.replace(var,'(variable missing)',1)
+            else: stream = stream.replace(var,str(self.vars[name]),1)
         
         return stream
     def sort(self,a1,a2):
