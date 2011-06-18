@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import cgi
 import cgitb
 import cPickle as pickle
@@ -46,10 +49,12 @@ class Home:
          
         buffer.append(x)
         
-        f = open('style/output.html','w')
-        f.write("\n".join(buffer))
-        f.close()
-        print "Done."
+        #f = open('style/output.html','w')
+        #f.write("\n".join(buffer))
+        #f.close()
+        #print "Done."
+        print "\n".join(buffer)
+        
     def fill(self,stream,vars):
         for match in re.finditer(self.varfinder,stream):
             var = match.group()
@@ -109,8 +114,8 @@ class Database:
                     mod += 1
                     self.load_article(article,mtime)
 
-        print "%i articles added, %i articles removed and %i articles modified."%(add,rem,mod)
-        print "Total %i articles loaded"%len(self.articles)
+        #print "%i articles added, %i articles removed and %i articles modified."%(add,rem,mod)
+        #print "Total %i articles loaded"%len(self.articles)
         if add or rem or mod:
             self.save()
             
@@ -118,7 +123,7 @@ class Database:
         f = open('articles.db','wb')
         pickle.dump(self.articles,f)
         f.close()
-        print "Saved"
+        #print "Saved"
     def load_article(self,article,mtime):
         f = open(article,'r')
         contents = f.read()
@@ -139,8 +144,10 @@ class Database:
         
         self.articles[article] = message
 
-if __name__ == '__main__':
-    cgitb.enable(1,'./logs',5,'text')
-    db = Database()
-    home = Home(db)
+#if __name__ == '__main__':
+print "Content-type: text/html"
+print 
+cgitb.enable(1,'./logs',5,'html')
+db = Database()
+home = Home(db)
     
