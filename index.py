@@ -121,25 +121,28 @@ class Home:
         buffer.append(self.fill(self.foot))
         return buffer
          
-
-    def displayPictures(self,request):
-        path = request.replace('/cgi-bin/index.py/','')
+    def notFound(self):
+        print "Status: 404 NOT FOUND"
+        print 
         
-        if '.jpg' in request or ".png" in request:
+    def displayPictures(self,request):
+        ''' This handles requests that are aimed to the pictures folder '''
+        path = request.replace('/cgi-bin/index.py/','')
+        ext  = request[-4:]
+        
+        # Send image files.
+        if '.jpg' in ext or ".png" in ext:
             if os.access(path,os.F_OK):
-                if '.jpg' in request: print "Content-type: image/jpeg"
-                else: print "Content-type: image/png"
-                print
+                if '.jpg' in request: print "Content-type: image/jpeg\n"
+                else:                 print "Content-type: image/png\n"
                 f = open(path,'rb')
                 x = f.read()
                 f.close()
                 print x
-            else:
-                print "Status: 404"
-                print
-
-        
-        elif '.html' in request:
+            else: self.notFound()
+            
+        # Send image pages
+        elif '.html' in request[-5:]:
             jpg = path.replace('.html','.jpg')
             png = path.replace('.html','.png')
             
@@ -148,8 +151,7 @@ class Home:
             else: image = False
             
             if image:
-                print "Content-type: text/html"
-                print                
+                print "Content-type: text/html\n"
                 self.head = self.load('style/head.html')
                 self.post = self.load('style/post-nometa.html')
                 self.foot = self.load('style/foot.html')
@@ -160,23 +162,19 @@ class Home:
                 buffer.append(self.fill(self.post))
                 buffer.append(self.fill(self.foot))
                 return buffer
-                
-                
-            else:
-                print "Status: 404 NOT FOUND"
-                print
-                
+            else: self.notFound()
+        
+        # Send gallery list..
         else:
             self.head = self.load('style/head.html')
             self.post = self.load('style/post-nometa.html')
             self.thumbnail = self.load('style/post-thumbnail.html')
             self.foot = self.load('style/foot.html')
-            #print "Content-type: text/plain"
-            #print
-            #print "Testing"
-            #print "List pictures.."
+  
             
             #TODO: CLEAN THIS FOR GODS SAKE
+            rowpics   = [] # Yes, I know I could do this with one variable..
+            rowtitles = []
             if os.access(path,os.F_OK):
                 print "Content-type: text/html"
                 print 
@@ -185,55 +183,73 @@ class Home:
                 buffer.append(self.fill(self.head))
                 buffer.append("<table><tr>")
                 walker = os.walk(path)
-                fpath,dirs,files = walker.next()
-                for i,dir in enumerate(dirs):
-                    self.vars['body'] = dir
-                    #if i % 5 == 0 : self.vars['thumbnail'] = 'thumbleft';buffer.append("<br>")
-                    #else: self.vars['thumbnail'] = 'thumbright'
-                    if i %5 == 0 and i != 0: buffer.append("</tr><tr>")
-                    
+                rootpath,rootdirs,rootfiles = walker.next()
+                
+                for i,dir in enumerate(rootdirs):
                     choices = []
-                    print "Checking","%s/%s"%(fpath,dir)
-                    for subpath,subdirs,subfiles in os.walk("%s/%s"%(fpath,dir)):
+                    for subpath,subdirs,subfiles in os.walk("%s/%s"%(rootpath,dir)):
                         for file in subfiles:
-                            if ".jpg" in file.lower() or ".png" in file.lower():
+                            if ".jpg" in file or ".png" in file:
                                 if 'thumb' not in file and 'medium' not in file and "comment" not in file:
                                     choices.append("%s/%s"%(subpath,file))
-                    self.vars['body'] = "%i pics"%(len(choices))
-                    
                     if len(choices) > 0:
                         picture = random.choice(choices)
-                        picture = picture.replace('.jpg','_thumb.jpg')
-                        picture = picture.replace('.png','_thumb.png')
-                        self.vars['body'] = '''<img src="http://www.eiden.fi/cgi-bin/index.py/%s" alt="none">'''%(picture)
-                        self.vars['body'] = '''<a href="http://www.eiden.fi/cgi-bin/index.py/%s/%s">%s</a>'''%(fpath,dir,self.vars['body'])
-                    buffer.append("<td><center>%s</center><br/>%s</td>"%(dir,self.fill(self.post)))
+                        # TODO: make a funcktion, getThumb()?
+                        if ".jpg" in picture: picture = picture.replace('.jpg','_thumb.jpg')
+                        else:                 picture = picture.replace('.png','_thumb.png')
+                        # TODO: Check if thumbnail exists, if not, generate.
+                        #self.vars['body'] = '''<img src="http://www.eiden.fi/cgi-bin/index.py/%s" alt="none">'''%(picture)
+                        #self.vars['body'] = '''<a href="http://www.eiden.fi/cgi-bin/index.py/%s/%s">%s</a>'''%(fpath,dir,self.vars['body'])
+                        rowpics.append("""<a href="http://www.eiden.fi/cgi-bin/index.py/%s/%s"><img src="http://www.eiden.fi/cgi-bin/index.py/%s" alt="%s"></a>"""%(rootpath,dir,picture,dir))
+                        rowtitles.append("%s"%dir)
+                    else:
+                        rowpics.append("""<a href="http://www.eiden.fi/cgi-bin/index.py/%s/%s">Empty</a>"""%(rootpath,dir))
+                        rowtitles.append("%s"%dir)
+                    
+                    #buffer.append("<td><center>%s</center><br/>%s</td>"%(dir,self.fill(self.post)))
                     
                     #buffer.append(self.fill(self.thumbnail))
-                buffer.append("</tr></table>")
-                
-                    
-                buffer.append("<table><tr>")
-                i = 0
-                for file in files:
+               
+                for file in rootfiles:
                     if ".jpg" not in file and ".png" not in file: continue
                     if 'thumb' in file or 'medium' in file or "comment" in file: continue
-                    if i %5 == 0 and i != 0: buffer.append("</tr><tr>")
-                    picture = "%s/%s"%(fpath,file)
-                    picture = picture.replace('.jpg','_thumb.jpg')
-                    picture = picture.replace('.png','_thumb.png')
+                    picture = "%s/%s"%(rootpath,file)
+                    if ".jpg" in picture: picture = picture.replace('.jpg','_thumb.jpg')
+                    else:                 picture = picture.replace('.png','_thumb.png')
                     file= file.replace('.jpg','.html')
                     file= file.replace('.png','.html')
-                    self.vars['body'] = '''<img src="http://www.eiden.fi/cgi-bin/index.py/%s" alt="none">'''%(picture)
-                    self.vars['body'] = '''<a href="http://www.eiden.fi/cgi-bin/index.py/%s/%s">%s</a>'''%(fpath,file,self.vars['body'])
-                    buffer.append("<td>%s<br/><center>%s</center></td>"%(self.fill(self.post),".".join(file.split('.')[:-1])))
-                    i += 1
-                buffer.append(self.fill(self.foot))
-                print "\n".join(buffer)
+                    rowpics.append('''<a href="http://www.eiden.fi/cgi-bin/index.py/%s/%s"><img src="http://www.eiden.fi/cgi-bin/index.py/%s" alt="%s"></a>'''%(rootpath,file,picture,file))
+                    rowtitles.append(file)
                 
-            else:
-                print "Status: 404 NOT FOUND"
-                print
+                #buffer.append(self.fill(self.foot))
+                #print "\n".join(buffer)
+                
+                # Now sort the pictures nicely.
+                # Lets do it with some silly while loop (INFINITEEE)
+                buffer.append("<table>")
+                while len(rowpics):
+                    buffer.append("<tr>")
+                    pics   = len(rowpics)
+                    titles = len(rowtitles)
+                    if pics > 5: pics = 5
+                    if titles > 5: titles = 5
+                    
+                    for pic in xrange(pics):
+                        buffer.append("<td>%s</td>"%rowpics.pop(0))
+                    buffer.append("</tr><tr>")
+                    for title in xrange(titles):
+                        buffer.append("<td>%s</td>"%rowtitles.pop(0))
+                    buffer.append("</tr>")
+                buffer.append("</table>")
+                #for i,image in enumerate(rowpics):
+                #    if i%5 == 0 and i != 0:
+                #        buffer.append
+                #    buffer.append(image)
+                return buffer
+                
+                
+                
+            else: self.notFound()
                 
         
     def fill(self,stream):
