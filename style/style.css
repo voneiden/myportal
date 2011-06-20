@@ -24,10 +24,20 @@ margin-right:auto;
 display: block;
 }
 
+hr.heading {
+height: 5px;
+border:1px solid #000;
+background-color: #65f;
+margin-top:0px;
+padding-top:0px;
+margin-bottom:5px;
+padding-bottom:0px;
+position: relative;
 
+}
 
 #spacer {
-  width: 100%;
+  width: 99%;
 background-color: #65f;
 height: 5px;
 margin-top:0px;
@@ -42,7 +52,7 @@ margin-top:0px;
 margin-bottom:0px;
 text-align: center;
 position: relative;
-top:-30px;
+top:-28px;
 }
 
 ul.top {
@@ -68,7 +78,7 @@ border-top-right-radius: 5px;
 border-top-left-radius: 5px;
 }
 #header {
-background: url(background.jpg) no-repeat;
+background: url(background.png) no-repeat;
 background-size: 100%;
 height: 100px;
 padding-bottom:0px;
@@ -83,7 +93,7 @@ padding-bottom:0px;
 padding-right:20px;
 padding-left:10px;
 }
-#fullbody {
+.fullbody {
 background-color: #555;
 position:relative;
 top:-28px;
@@ -93,8 +103,8 @@ padding-left:15%;
 padding-right:15%;
 margin-bottom: 0px;
 }
-#bodyblock {
-background-color: #888;
+.bodyblock {
+background-color: #88A;
 border-bottom-right-radius: 5px;
 border-bottom-left-radius: 5px;
 border-top-right-radius: 5px;
@@ -120,11 +130,11 @@ margin-bottom:5px;
 font-weight:normal;
 margin-left:5px;
 }
-#message {
+.message {
 font-size:16px;
 }
 
-#code{
+.code{
 font-family: monospace;
 background-color: #999;
 border-bottom-right-radius: 5px;

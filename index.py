@@ -16,44 +16,52 @@ class Home:
         self.varfinder = re.compile('\$\(.+?\)')
         self.db = db
         
-        vars = {
+        self.vars = {
         'page_title':'I hate titles.',
-        'quote':'Orion!'}
+        'quote':'lol, inter'}
         
         f = open('style/head.html','r')
         x = f.read()
         f.close()
-        
-        stream = self.fill(x,vars)
-        buffer.append(stream)
+        self.head = x
         
         f = open('style/post.html','r')
         x = f.read()
         f.close()
+        self.post = x
         
-        articles = self.db.articles.keys()
-        articles.sort(self.sort)
-        
-        for path in articles[:5]:
-            article = self.db.articles[path]
-            vars.update(article)
-            date = time.gmtime(article['date'])
-            vars['date'] = time.strftime("%B %d, %Y.")
-            stream = self.fill(x,vars)
-            buffer.append(stream)
-         
-
         f = open('style/foot.html','r')
         x = f.read()
         f.close()
-         
-        buffer.append(x)
+        self.foot = x
         
-        #f = open('style/output.html','w')
-        #f.write("\n".join(buffer))
-        #f.close()
-        #print "Done."
+        
+        self.articles = self.db.articles.keys()
+        self.articles.sort(self.sort)
+        
+        # Handle request here
+        buffer = self.displayPosts()
         print "\n".join(buffer)
+        
+    def displayPosts(self,start=0):
+        buffer = []
+        buffer.append('Content-type: text/html; charset=UTF-8')
+        buffer.append('')
+        buffer.append(self.fill(self.head))
+        
+        for path in self.articles[:5]:
+            article = self.db.articles[path]
+            vars.update(article)
+            date = time.gmtime(article['date'])
+            #print "using date",date
+            vars['date'] = time.strftime("%B %d, %Y.",date)
+            stream = self.fill(x)
+            buffer.append(stream)
+            
+        buffer.append(self.fill(self.foot))
+        return buffer
+         
+
         
     def fill(self,stream,vars):
         for match in re.finditer(self.varfinder,stream):
@@ -145,8 +153,7 @@ class Database:
         self.articles[article] = message
 
 #if __name__ == '__main__':
-print "Content-type: text/html"
-print 
+
 cgitb.enable(1,'./logs',5,'html')
 db = Database()
 home = Home(db)
