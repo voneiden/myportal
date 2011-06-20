@@ -142,3 +142,27 @@ border-bottom-left-radius: 5px;
 border-top-right-radius: 5px;
 border-top-left-radius: 5px;
 }
+
+.thumbleft{
+float: left;
+background-color: #88A;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+width: 19%;
+margin-right:5px;
+margin-bottom:5px;
+}
+
+.thumbright{
+float: right;
+background-color: #88A;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+width: 19%;
+margin-right:5px;
+margin-bottom:5px;
+}
