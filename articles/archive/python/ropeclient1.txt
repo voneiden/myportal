@@ -9,7 +9,7 @@ However one thing that bugs me in IRC (and Skype), is that you have very limited
 <ul>
 <li>A player list, that show's if somebody is typing (Nice feature for the GM inspired by skype!)
 <li>Automatic coloring of various actions, such as speaking, emoting, and telling (private messages)
-<li>Freeform coloring using simple color tags (<red>, <blue>, <pink> etc.)
+<li>Freeform coloring using simple color tags (&lt;red&gt;, &lt;blue&gt;, &lt;pink&gt; etc.)
 <li>Integrated dice that can be used anywhere in a sentence using the traditional dice command (ex. !d6 or !2d6+d8+3 etc.)
 <li>Seperate character names that can be quickly altered
 </ul>

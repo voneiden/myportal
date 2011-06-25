@@ -11,7 +11,7 @@ The content management system took a spin into more complex direction too. Origi
 This, however, caused some trouble for me. Conserving the timestamps became a bit of a burden, and accidentally modifying them was way too easy. Also I thought about using git to backup my posts, but git drops the timestamps altogether. The logical choice for me was to stick in the text based content management, but to include dates and such in the file text itself. Then I came up with using a very common standard - email plain text messages!<p>
 
 Indeed, this file now looks roughly like this:<br>
-<div id="code">
+<div class="code">
 Subject: Testing new code<br>
 Date: 15 Jun 2011 11:45:00 +0300<br>
 From: voneiden<br>
