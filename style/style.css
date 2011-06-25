@@ -37,7 +37,7 @@ position: relative;
 }
 
 #spacer {
-  width: 99%;
+  width: 100%;
 background-color: #65f;
 height: 5px;
 margin-top:0px;
@@ -45,7 +45,8 @@ padding-top:0px;
 margin-bottom:5px;
 padding-bottom:0px;
 position: relative;
-border:1px solid #000;
+border-top:1px solid #000;
+border-bottom:1px solid #000;
 }
 #menu {
 margin-top:0px;
@@ -94,7 +95,7 @@ padding-right:20px;
 padding-left:10px;
 }
 .fullbody {
-background-color: #555;
+background-color: #222;
 position:relative;
 top:-28px;
 padding-top: 20px;
